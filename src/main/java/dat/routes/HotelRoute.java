@@ -13,11 +13,11 @@ public class HotelRoute {
     protected EndpointGroup getRoutes() {
 
         return () -> {
-            post("/", hotelController::create, Role.USER);
-            get("/", hotelController::readAll);
-            get("/{id}", hotelController::read);
-            put("/{id}", hotelController::update);
-            delete("/{id}", hotelController::delete);
+            post("/", hotelController::create, Role.ADMIN);
+            get("/", hotelController::readAll, Role.ANYONE);
+            get("/{id}", hotelController::read, Role.ANYONE);
+            put("/{id}", hotelController::update, Role.ADMIN);
+            delete("/{id}", hotelController::delete, Role.ADMIN);
         };
     }
 }

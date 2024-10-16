@@ -38,7 +38,7 @@ Accept: application/json
 Authorization: Bearer {{jwt_token}}
 
 {
-    "role": "superman"
+    "role": "admin"
 }
 Accept: application/json
 Authorization: Bearer {{jwt_token}}
@@ -54,6 +54,8 @@ GET {{url}}/hotels/2
 
 POST {{url}}/hotels
 Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
 
 {
   "hotelName": "Holiday Inn",
@@ -65,6 +67,8 @@ Content-Type: application/json
 
 PUT {{url}}/hotels/3
 Content-Type: application/json
+Accept: application/json
+Authorization: Bearer {{jwt_token}}
 
 {
   "hotelName": "Ritz Carlton",
