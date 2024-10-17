@@ -41,11 +41,6 @@ public class HotelDAO implements IDAO<HotelDTO, Integer> {
     }
 
     @Override
-    public List<HotelDTO> readByType(String s) {
-        return null;
-    }
-
-    @Override
     public HotelDTO create(HotelDTO hotelDTO) {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();

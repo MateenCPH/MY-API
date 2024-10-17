@@ -8,7 +8,7 @@ public interface IDAO<T, I> {
 
     T readById(I i);
     List<T> readAll();
-    List<T> readByType(String s);
+//    List<T> readByType(T s);
     T create(T t);
     T update(I i, T t);
     void delete(I i);

@@ -16,7 +16,7 @@ public class PlantRoute {
             post("/", plantController::create, Role.ANYONE);
             get("/", plantController::readAll, Role.ANYONE);
             get("/{id}", plantController::readById, Role.ANYONE);
-            put("/type/{type}", plantController::readByType, Role.ANYONE);
+            get("/type/{type}", plantController::readByType, Role.ANYONE);
         };
     }
 }

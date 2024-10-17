@@ -4,6 +4,7 @@ import dat.config.HibernateConfig;
 import dat.controllers.IController;
 import dat.daos.impl.PlantDAO;
 import dat.dtos.PlantDTO;
+import dat.entities.Plant;
 import io.javalin.http.Context;
 import jakarta.persistence.EntityManagerFactory;
 
@@ -40,7 +41,7 @@ public class PlantController implements IController<PlantDTO, Integer> {
     @Override
     public void readByType(Context ctx) {
         // request
-        String type = ctx.pathParam("type");
+        Plant.PlantType type = Plant.PlantType.valueOf(ctx.pathParam("type"));
         // List of DTOS
         List<PlantDTO> plantDTOS = dao.readByType(type);
         // response

@@ -42,7 +42,7 @@ public class PlantDAO implements IDAO<PlantDTO, Integer> {
         }
     }
 
-    public List<PlantDTO> readByType(String s) {
+    public List<PlantDTO> readByType(Plant.PlantType s) {
         try (EntityManager em = emf.createEntityManager()) {
             TypedQuery<PlantDTO> query = em.createQuery("SELECT new dat.dtos.PlantDTO(p) FROM Plant p WHERE p.plantType = :type", PlantDTO.class);
             query.setParameter("type", s);

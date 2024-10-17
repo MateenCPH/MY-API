@@ -59,11 +59,6 @@ public class RoomDAO implements IDAO<RoomDTO, Integer> {
     }
 
     @Override
-    public List<RoomDTO> readByType(String s) {
-        return List.of();
-    }
-
-    @Override
     public RoomDTO create(RoomDTO roomDTO) {
         try (EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
