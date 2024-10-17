@@ -2,7 +2,6 @@ package dat.daos.impl;
 
 import dat.daos.IDAO;
 import dat.dtos.PlantDTO;
-import dat.entities.Hotel;
 import dat.entities.Plant;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
