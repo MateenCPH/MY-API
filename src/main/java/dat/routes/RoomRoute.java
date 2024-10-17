@@ -14,7 +14,7 @@ public class RoomRoute {
         return () -> {
             post("/hotel/{id}", roomController::create);
             get("/", roomController::readAll);
-            get("/{id}", roomController::read);
+            get("/{id}", roomController::readById);
             put("/{id}", roomController::update);
             delete("/{id}", roomController::delete);
         };

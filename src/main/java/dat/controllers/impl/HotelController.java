@@ -20,11 +20,11 @@ public class HotelController implements IController<HotelDTO, Integer> {
     }
 
     @Override
-    public void read(Context ctx)  {
+    public void readById(Context ctx)  {
         // request
         int id = ctx.pathParamAsClass("id", Integer.class).check(this::validatePrimaryKey, "Not a valid id").get();
         // DTO
-        HotelDTO hotelDTO = dao.read(id);
+        HotelDTO hotelDTO = dao.readById(id);
         // response
         ctx.res().setStatus(200);
         ctx.json(hotelDTO, HotelDTO.class);
@@ -37,6 +37,11 @@ public class HotelController implements IController<HotelDTO, Integer> {
         // response
         ctx.res().setStatus(200);
         ctx.json(hotelDTOS, HotelDTO.class);
+    }
+
+    @Override
+    public void readByType(Context ctx) {
+
     }
 
     @Override

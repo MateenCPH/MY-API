@@ -15,7 +15,7 @@ public class HotelRoute {
         return () -> {
             post("/", hotelController::create, Role.ADMIN);
             get("/", hotelController::readAll, Role.ANYONE);
-            get("/{id}", hotelController::read, Role.ANYONE);
+            get("/{id}", hotelController::readById, Role.ANYONE);
             put("/{id}", hotelController::update, Role.ADMIN);
             delete("/{id}", hotelController::delete, Role.ADMIN);
         };

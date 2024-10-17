@@ -43,7 +43,7 @@ public class RoomDAO implements IDAO<RoomDTO, Integer> {
     }
 
     @Override
-    public RoomDTO read(Integer integer) {
+    public RoomDTO readById(Integer integer) {
         try (EntityManager em = emf.createEntityManager()) {
             Room room = em.find(Room.class, integer);
             return room != null ? new RoomDTO(room) : null;
@@ -56,6 +56,11 @@ public class RoomDAO implements IDAO<RoomDTO, Integer> {
             TypedQuery<RoomDTO> query = em.createQuery("SELECT new dat.dtos.RoomDTO(r) FROM Room r", RoomDTO.class);
             return query.getResultList();
         }
+    }
+
+    @Override
+    public List<RoomDTO> readByType(String s) {
+        return List.of();
     }
 
     @Override
