@@ -9,6 +9,7 @@ import jakarta.persistence.TypedQuery;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.util.Comparator;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -68,6 +69,28 @@ public class PlantDAO implements IDAO<PlantDTO, Integer> {
     @Override
     public PlantDTO update(Integer i, PlantDTO plantDTO) {
         return null;
+    }
+
+    public List<PlantDTO> readByMaximumHeight(int height) {
+        try (EntityManager em = emf.createEntityManager()) {
+            TypedQuery<PlantDTO> query = em.createQuery("SELECT new dat.dtos.PlantDTO(p) FROM Plant p WHERE p.maxHeight <= :height", PlantDTO.class);
+            query.setParameter("height", height);
+            return query.getResultList();
+        }
+    }
+
+    public List<String> readPlantNames() {
+        try (EntityManager em = emf.createEntityManager()) {
+            TypedQuery<PlantDTO> query = em.createQuery("SELECT new dat.dtos.PlantDTO(p) FROM Plant p", PlantDTO.class);
+            return query.getResultList().stream().map(PlantDTO::getPlantName).toList();
+        }
+    }
+
+    public List<PlantDTO> readPlantsAndSortByName() {
+        try (EntityManager em = emf.createEntityManager()) {
+            TypedQuery<PlantDTO> query = em.createQuery("SELECT new dat.dtos.PlantDTO(p) FROM Plant p", PlantDTO.class);
+            return query.getResultList().stream().sorted(Comparator.comparing(PlantDTO::getPlantName)).toList();
+        }
     }
 
     @Override

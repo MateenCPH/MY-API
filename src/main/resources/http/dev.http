@@ -53,6 +53,15 @@ GET {{url}}/plants/1
 GET {{url}}/plants/type/ROSE
 
 ###
+GET {{url}}/plants/maxHeight/300
+
+###
+GET {{url}}/plants/plantNames
+
+###
+GET {{url}}/plants/pantNamesSorted
+
+###
 
 POST {{url}}/plants
 Content-Type: application/json

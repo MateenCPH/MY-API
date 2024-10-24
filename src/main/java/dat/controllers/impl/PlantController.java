@@ -9,6 +9,7 @@ import io.javalin.http.Context;
 import jakarta.persistence.EntityManagerFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlantController implements IController<PlantDTO, Integer> {
     private final PlantDAO dao;
@@ -68,6 +69,30 @@ public class PlantController implements IController<PlantDTO, Integer> {
     @Override
     public void delete(Context ctx) {
 
+    }
+
+    public void readByMaxHeight(Context ctx) {
+        //request
+        int height = ctx.pathParamAsClass("maxHeight", Integer.class).check(h -> h > 0, "Height must be greater than 0").get();
+        // List of DTOS
+        List<PlantDTO> plantDTOS = dao.readByMaximumHeight(height);
+        // response
+        ctx.res().setStatus(200);
+        ctx.json(plantDTOS, PlantDTO.class);
+    }
+
+    public void readAndReturnNames(Context ctx) {
+        // List of plant names only
+        List<String> plantNames = dao.readPlantNames();
+        ctx.status(200);
+        ctx.json(plantNames);
+    }
+
+    public void readAndReturnNamesSorted(Context ctx) {
+        // List of plant names only
+        List<PlantDTO> plantDTOS = dao.readPlantsAndSortByName();
+        ctx.status(200);
+        ctx.json(plantDTOS, PlantDTO.class);
     }
 
     @Override
