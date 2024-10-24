@@ -12,6 +12,7 @@ public class Main {
         ApplicationConfig.startServer(7070);
         Populate.main(args);
         //New test
+        //new test again
 //        EntityManagerFactory emf = HibernateConfig.getEntityManagerFactory();
 //        PlantDAO dao = PlantDAO.getInstance(emf);
 //        dao.readPlantNames().forEach(System.out::println);
